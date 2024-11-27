@@ -1,0 +1,106 @@
+-> Representing Content Lesson
+	-> Create a Flask Pagination Widget
+		-> 17 min to complete · By Brandon Gigous
+		-> Introduction
+		-> What is Pagination?
+		-> Flask Pagination with SQLAlchemy Paginate
+		-> Create a Flask Pagination Widget
+		-> Pagination Macro
+		-> Summary: Flask Pagination with SQLAlchemy Paginate
+
+-> In this lesson, you'll finally generate your dummy data using Python Faker as introduced in the previous lesson
+	-> Then, you'll display it with a Python + Flask pagination widget
+
+-> What is Pagination?
+	-> To make a website user experience better, pagination renders content into more digestible chunks and gives the user the option and ability to see more chunks
+	-> Pagination is like real pages in a book where all you need to do to read more is flip a page
+	-> Pagination in web apps is the same thing but digital
+	-> Professional websites rarely force users to scroll through miles of content in a giant page
+
+-> Flask Pagination with SQLAlchemy Paginate
+	-> To quickly clamp down on the number of compositions you can see in your index page, you can use the Flask-SQLAlchemy method to replace the all() method
+	-> You need to bring up your view function and use paginate()
+		-> The first line shown is the page of content to render, determined by the query string in the request
+		-> If no page is provided, page 1 is the default
+		-> The page argument expects an integer, and if it's not given, page 1 is set
+		-> Example: To display page 2 of content, the URL would look like this: http://localhost:5000/?page=2
+
+-> Pagination logic
+	-> The query is replaced with paginate(), which takes the desired page number, the number of results per page, and whether or not to issue a 404 error if the page is out of range
+		-> The only required argument is page
+		-> The per_page argument defines how many results to display on a page, and the app config determines this number
+		-> If there are 21 compositions and 20 results per page, the number of pages needed is 2
+		-> Invalid page numbers return an empty list of compositions if error_out is set to False
+	-> Example:
+		-> page = request.args.get('page', 1, type=int)
+		-> pagination = Composition.query.order_by(Composition.timestamp.desc()).paginate(page, per_page=current_app.config['RAGTIME_COMPS_PER_PAGE'], error_out=False)
+		-> compositions = pagination.items
+
+-> Creating Fake Content with Flask Shell
+	-> In a Flask shell session, you can create fake content using the fake object
+		-> flask shell
+		-> from app import fake
+		-> fake.users(20)
+		-> fake.compositions(100)
+
+-> Create a Flask Pagination Widget
+	-> The pagination widget allows navigation through pages of content without reloading the page
+	-> Adding a pagination object to the template enables various useful methods for displaying page numbers
+		-> Example methods and attributes of the pagination object:
+			-> has_next: if there is a next page
+			-> has_prev: if there is a previous page
+			-> items: records on the current page
+			-> next_num: the next page number
+			-> prev_num: the previous page number
+			-> pages: total number of pages
+			-> per_page: number of items per page
+			-> total: total number of items across all pages
+
+-> Iterating Pages with `iter_pages()`
+	-> The `iter_pages()` method helps generate a sequence of page numbers to display in the widget
+		-> Arguments: left_current, right_current, left_edge, right_edge
+		-> These control how many pages are shown before and after the current page, and around the edges
+		-> For example, calling iter_pages() on page 10 with default settings might show: 1, 2, ..., 8, 9, 10, 11, 12, ..., 19, 20
+
+-> Pagination Macro
+	-> Macros are used to define reusable pieces of code in templates
+	-> The pagination macro helps generate the widget and can be used multiple times in the app
+		-> Example pagination macro in app/templates/_macros.html:
+			-> {% macro pagination_widget(pagination, endpoint) %}
+			-> <ul class="pagination">
+				-> {# previous page link #}
+				-> <li{% if not pagination.has_prev %} class="disabled"{% endif %}>
+				-> <a href="{% if pagination.has_prev %}{{ url_for(endpoint, page=1, **kwargs) }}{% else %}#{% endif %}">&laquo;</a>
+				-> </li>
+				-> {# page links #}
+				-> {% for p in pagination.iter_pages(1, 5, 5, 1) %}
+				-> <li{% if p == pagination.page %} class="active"{% endif %}>
+				-> <a href="{{ url_for(endpoint, page=p, **kwargs) }}">{{ p }}</a>
+				-> </li>
+				-> {% else %}
+				-> <li class="disabled"><a href="#">&hellip;</a></li>
+				-> {% endif %}
+				-> {% endfor %}
+				-> {# next page link #}
+				-> <li{% if not pagination.has_next %} class="disabled"{% endif %}>
+				-> <a href="{% if pagination.has_next %}{{ url_for(endpoint, page=pagination.pages, **kwargs) }}{% else %}#{% endif %}">&raquo;</a>
+				-> </li>
+			-> </ul>
+			-> {% endmacro %}
+
+-> Using the Macro in Templates
+	-> After defining the macro, you can import it into your templates
+		-> Example usage in index.html:
+			-> {% import "macros.html" as macros %}
+			-> {% if pagination %}
+			-> <div class="pagination">
+			-> {{ macros.pagination_widget(pagination, 'home') }}
+			-> </div>
+			-> {% endif %}
+
+-> Summary: Flask Pagination with SQLAlchemy
+	-> Pagination improves the user experience by dividing content into smaller, manageable chunks
+	-> Flask-SQLAlchemy's paginate() method allows easy handling of large datasets
+	-> The pagination object provides methods to control and display page numbers dynamically
+	-> Using Jinja macros, you can create reusable pagination widgets for multiple parts of your app
+

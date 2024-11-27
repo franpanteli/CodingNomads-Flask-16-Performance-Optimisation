@@ -1,0 +1,36 @@
+-> Enable User Content Editing
+	-> Allow users to edit their compositions in the app
+	-> Similar to enabling users to edit their profiles
+	-> This lesson focuses on letting users have editing control over their own compositions
+
+-> Edit Composition Template
+	-> Create a template to show a form for editing a composition
+	-> Reuse elements from previous templates for consistency
+	-> The template should allow users to edit their compositions
+
+-> View Function
+	-> Create a view function to render the edit composition template
+	-> The view function should point to the URL `edit/<slug>`
+	-> The slug should correspond to the composition being edited
+	-> Only the user who created the composition or an admin should be able to access the edit page
+	-> Users who try to edit compositions they didn’t create should receive a 403 forbidden error
+	-> After editing, regenerate the permalink slug to account for changes to the composition's title
+
+-> Add an Edit Button
+	-> Make it easier for users to access the edit page by adding an edit button
+	-> Show the edit button for logged-in users on their own compositions
+	-> Show the edit button for admins on all compositions
+	-> Position the edit button using CSS for proper alignment
+	-> Example CSS: `div.composition-footer { text-align: right; }`
+
+-> Summary: Enable User Editing of your Python + Flask app
+	-> Create a template for editing compositions
+	-> Implement a view function to render the editing form
+	-> Add an edit button for users to easily access the edit page
+	-> Ensure only the composition's creator or admins can edit it
+	-> Regenerate the permalink slug when a user updates a composition's title
+
+-> Mentorship Makes the Difference!
+	-> Join the CodingNomads' Mentorship Bootcamp Program
+	-> Get personalized mentorship and support from experienced professionals
+	-> Weekly 1-on-1 meetings, 7-day support via Discord, and accountability

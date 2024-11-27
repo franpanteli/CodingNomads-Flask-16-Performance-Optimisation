@@ -1,0 +1,24 @@
+-> Labs: Mock Data and Pagination
+	-> 3-minute exercise to complete
+	-> By Brandon Gigous
+
+-> Instructions for the Lab
+	-> Clone the Python Flask labs project if not already done
+	-> Open the cloned project in VS Code
+	-> Complete all exercises in the "15_representing_content/01_fake_and_paginate" folder
+
+-> Assistance and Support
+	-> If subscribed to membership or mentorship programs, reach out via Discord for help
+	-> Ask for reviews or assistance when needed
+
+-> Version Control and Collaboration
+	-> Important to push your completed work to GitHub
+	-> Git and GitHub are essential tools for version control and collaboration in software engineering
+	-> Do not skip this step
+	-> Prove your work and gain valuable practice with version control
+	-> Pushing your work to GitHub helps demonstrate progress and commitment
+	-> Take advantage of GitHub contributions for a strong portfolio
+
+-> Contribution Graphs
+	-> Looking at contribution graphs on GitHub, which developer would you hire?
+	-> Example of the importance of regular contributions to GitHub for visibility and career growth
