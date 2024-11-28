@@ -1,46 +1,46 @@
--> Representing Content Lesson: Sanitizing HTML in Jinja and Flask
-	-> 16 min to complete · By Brandon Gigous
-	-> Introduction to sanitizing HTML
-	-> Sanitizing HTML prevents harmful attacks by stripping dangerous HTML code submitted by users
-	-> Similar to disinfecting surfaces, sanitizing HTML ensures safe user input on websites
-	-> Jinja control structures allow easy reuse of HTML templates through includes
-	-> Using {% include %} allows you to display compositions from other templates
+-> Representing Content Lesson: Sanitising HTML in Jinja and Flask
+    -> 16 min to complete · By Brandon Gigous
+    -> Introduction to sanitising HTML
+    -> Sanitising HTML prevents harmful attacks by stripping dangerous HTML code submitted by users
+    -> Similar to disinfecting surfaces, sanitising HTML ensures safe user input on websites
+    -> Jinja control structures allow easy reuse of HTML templates through includes
+    -> Using {% include %} allows you to display compositions from other templates
 
 -> How to Use Jinja Include
-	-> Partial templates can be reused across full templates to simplify composition rendering
-	-> Name partial templates with an underscore to denote that they are not full pages
-	-> Example: create a template called _compositions.html to render composition list
-	-> Reuse _compositions.html in other templates by including it using {% include _compositions.html %}
-	-> Render compositions for specific users on their profile page using render_template()
+    -> Partial templates can be reused across full templates to simplify composition rendering
+    -> Name partial templates with an underscore to denote that they are not full pages
+    -> Example: create a template called _compositions.html to render composition list
+    -> Reuse _compositions.html in other templates by including it using {% include _compositions.html %}
+    -> Render compositions for specific users on their profile page using render_template()
 
 -> Don't Forget The Placeholders
-	-> Pass placeholders to the template using render_template() to populate partial templates
-	-> Add pagination to handle large sets of compositions on user pages
-	-> Example: paginate compositions for specific users using the appropriate view function
+    -> Pass placeholders to the template using render_template() to populate partial templates
+    -> Add pagination to handle large sets of compositions on user pages
+    -> Example: paginate compositions for specific users using the appropriate view function
 
 -> Markdown and Mozilla Bleach
-	-> If HTML is submitted in form data, it won't be rendered directly due to security risks
-	-> Use Markdown or Bleach to allow users to format their text with HTML elements like bold and italics
-	-> Bleach library sanitizes the HTML, allowing only safe tags (e.g., <a>) to pass through
-	-> Install Bleach using pip for HTML sanitization
+    -> If HTML is submitted in form data, it won't be rendered directly due to security risks
+    -> Use Markdown or Bleach to allow users to format their text with HTML elements like bold and italics
+    -> Bleach library sanitises the HTML, allowing only safe tags (e.g., <a>) to pass through
+    -> Install Bleach using pip for HTML sanitisation
 
 -> Caching HTML
-	-> Save a sanitized version of user-submitted HTML in the database to avoid re-rendering it each time
-	-> Use a new field in the database model to store the sanitized HTML version of composition descriptions
-	-> Use Bleach to strip unsafe tags and linkify any URLs in the description automatically
-	-> Example: use db.event.listen to automatically sanitize content when descriptions change
+    -> Save a sanitised version of user-submitted HTML in the database to avoid re-rendering it each time
+    -> Use a new field in the database model to store the sanitised HTML version of composition descriptions
+    -> Use Bleach to strip unsafe tags and linkify any URLs in the description automatically
+    -> Example: use db.event.listen to automatically sanitise content when descriptions change
 
 -> Putting The HTML In The Template
-	-> Use Jinja’s safe filter to render sanitized HTML in templates
-	-> {{ composition.description_html | safe }} renders the sanitized HTML safely in the template
-	-> Ensure that raw HTML isn't automatically escaped by Jinja by using the safe filter
-	-> This ensures that the content is displayed exactly as intended without risking XSS vulnerabilities
+    -> Use Jinja’s safe filter to render sanitised HTML in templates
+    -> {{ composition.description_html | safe }} renders the sanitised HTML safely in the template
+    -> Ensure that raw HTML isn't automatically escaped by Jinja by using the safe filter
+    -> This ensures that the content is displayed exactly as intended without risking XSS vulnerabilities
 
--> Summary: How to Sanitize HTML
-	-> Sanitizing HTML involves stripping harmful HTML tags submitted by users to protect your site
-	-> Reuse HTML code easily using Jinja’s {% include %} control structure for templates
-	-> Placeholders must be passed from the host template to partial templates
-	-> Markdown can be used for simple text formatting, but Bleach is a safer option for HTML sanitization
-	-> Bleach helps to clean HTML and convert URLs to clickable links automatically
-	-> Store sanitized HTML in the database to avoid re-processing the same content repeatedly
-	-> Render sanitized HTML in templates using Jinja’s safe filter to ensure secure content display
+-> Summary: How to Sanitise HTML
+    -> Sanitising HTML involves stripping harmful HTML tags submitted by users to protect your site
+    -> Reuse HTML code easily using Jinja’s {% include %} control structure for templates
+    -> Placeholders must be passed from the host template to partial templates
+    -> Markdown can be used for simple text formatting, but Bleach is a safer option for HTML sanitisation
+    -> Bleach helps to clean HTML and convert URLs to clickable links automatically
+    -> Store sanitised HTML in the database to avoid re-processing the same content repeatedly
+    -> Render sanitised HTML in templates using Jinja’s safe filter to ensure secure content display

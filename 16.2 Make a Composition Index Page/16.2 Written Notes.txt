@@ -1,31 +1,31 @@
 -> In this lesson, you will display compositions on the index page
-	-> You will use an unordered list (<ul>) to list all compositions
-	-> Each composition will be represented by a list item (<li>)
-	-> For each composition, display the following information:
-		-> Artist's avatar - Link to the artist's profile page
-		-> Date of submission - Use moment.js to show the time relative to now
-		-> Artist's username - Link to the artist's profile page
-		-> Release type - Display as "Single", "EP", or "Album" based on composition's release type
-		-> Title - Show the composition's title
-		-> Description - Show the composition's description
+    -> You will use an unordered list (<ul>) to list all compositions
+    -> Each composition will be represented by a list item (<li>)
+    -> For each composition, display the following information:
+        -> Artist's avatar - Link to the artist's profile page
+        -> Date of submission - Use moment.js to show the time relative to now
+        -> Artist's username - Link to the artist's profile page
+        -> Release type - Display as "Single", "EP", or "Album" based on composition's release type
+        -> Title - Show the composition's title
+        -> Description - Show the composition's description
 
 -> CSS styling for the page is optional but helpful for making the information readable
-	-> Recommended CSS classes include:
-		-> .compositions - for the list of compositions
-		-> .composition - for each composition
-		-> .composition-thumbnail - for the avatar of the artist
-		-> .composition-content - for the textual content (date, artist, title, etc.)
-		-> .composition-date - for the submission date
-		-> .composition-artist - for the artist's username
-		-> .composition-release-type - for the release type (italic)
-		-> .composition-title - for the title (bold)
-		-> .composition-thumbnail - for the avatar image
-		-> .composition-content - for the surrounding content area
+    -> Recommended CSS classes include:
+        -> .compositions - for the list of compositions
+        -> .composition - for each composition
+        -> .composition-thumbnail - for the avatar of the artist
+        -> .composition-content - for the textual content (date, artist, title, etc.)
+        -> .composition-date - for the submission date
+        -> .composition-artist - for the artist's username
+        -> .composition-release-type - for the release type (italic)
+        -> .composition-title - for the title (bold)
+        -> .composition-thumbnail - for the avatar image
+        -> .composition-content - for the surrounding content area
 
 -> Only show the composition submission form if the user has permission to publish compositions
-	-> This ensures only authorised users can submit compositions
+    -> This ensures only authorised users can submit compositions
 
 -> The index page should display the list of compositions in a simple, readable format
-	-> It does not need to be perfectly styled, as long as the information is clear
+    -> It does not need to be perfectly styled, as long as the information is clear
 
 -> Once implemented, the index page will display compositions with all the relevant details, styled to some degree

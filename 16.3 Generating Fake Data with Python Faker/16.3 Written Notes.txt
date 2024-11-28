@@ -1,73 +1,73 @@
 -> This lesson teaches how to generate fake data using Python Faker
-	-> Useful for creating dummy data for testing and development
-	-> Fake data should never be used in production releases
-	-> You'll learn to generate fake users and fake compositions
+    -> Useful for creating dummy data for testing and development
+    -> Fake data should never be used in production releases
+    -> You'll learn to generate fake users and fake compositions
 
 -> Python Faker: Random Data Generator
-	-> Python Faker is a library that generates random fake data for testing purposes
-	-> Can generate data like emails, usernames, dates, names, and more
-	-> The generated data looks realistic, making it useful for testing applications
+    -> Python Faker is a library that generates random fake data for testing purposes
+    -> Can generate data like emails, usernames, dates, names, and more
+    -> The generated data looks realistic, making it useful for testing applications
 
 -> Install Python Faker
-	-> Install the library using pip: 
-		-> (env) $ pip install faker
-	-> It's crucial to use Python Faker only in development, not in production
+    -> Install the library using pip:
+        -> (env) $ pip install faker
+    -> It's crucial to use Python Faker only in development, not in production
 
 -> Only Use Dummy Data in Development
-	-> Fake data should only be used in development environments
-	-> To ensure it’s excluded from production, use environment-specific configurations
+    -> Fake data should only be used in development environments
+    -> To ensure it’s excluded from production, use environment-specific configurations
 
 -> Separate into Multiple Files
-	-> Separate configuration files for development, production, and testing environments
-	-> Create a common requirements file to avoid duplication and manage dependencies more efficiently
+    -> Separate configuration files for development, production, and testing environments
+    -> Create a common requirements file to avoid duplication and manage dependencies more efficiently
 
 -> Suggested file structure for better organisation:
-	-> flask-webdev/
-		-> app/
-		-> requirements/
-			-> common.txt
-			-> dev.txt
-			-> prod.txt
-		-> requirements.txt
+    -> flask-webdev/
+        -> app/
+        -> requirements/
+            -> common.txt
+            -> dev.txt
+            -> prod.txt
+        -> requirements.txt
 
 -> Managing Dependencies
-	-> Separate development-only dependencies (like Faker) from production dependencies
-	-> Use `pip freeze | grep Faker= > dev.txt` to list development dependencies in dev.txt
-	-> Keep production requirements free of development-only packages
+    -> Separate development-only dependencies (like Faker) from production dependencies
+    -> Use `pip freeze | grep Faker= > dev.txt` to list development dependencies in dev.txt
+    -> Keep production requirements free of development-only packages
 
 -> Become The Faker
-	-> Embrace the role of a faker by generating realistic fake data
-	-> In the next steps, you will create fake users and compositions for your app
-	-> You can test the fake data in a Flask shell session
+    -> Embrace the role of a faker by generating realistic fake data
+    -> In the next steps, you will create fake users and compositions for your app
+    -> You can test the fake data in a Flask shell session
 
 -> Faking Users
-	-> Create a function to generate fake users
-		-> Use Faker to generate emails, usernames, names, cities, and more
-		-> Handle potential duplicates by catching exceptions and rolling back if necessary
-		-> Function example:
-			-> app/faker.py
-			-> Use SQLAlchemy to add users to the database
-			-> Try to add fake users until the specified count is reached
+    -> Create a function to generate fake users
+        -> Use Faker to generate emails, usernames, names, cities, and more
+        -> Handle potential duplicates by catching exceptions and rolling back if necessary
+        -> Function example:
+            -> app/faker.py
+            -> Use SQLAlchemy to add users to the database
+            -> Try to add fake users until the specified count is reached
 
 -> Faking Compositions
-	-> Create a similar function for generating fake compositions
-		-> Pick a random user as the artist for each composition
-		-> Generate random release types, titles, and descriptions
-		-> Use `randint` to select a random user and add compositions to the database
+    -> Create a similar function for generating fake compositions
+        -> Pick a random user as the artist for each composition
+        -> Generate random release types, titles, and descriptions
+        -> Use `randint` to select a random user and add compositions to the database
 
 -> Managing Duplicates in Faker
-	-> Handle potential duplicate entries by catching exceptions
-	-> Rollback the session if a duplicate user or composition is generated
+    -> Handle potential duplicate entries by catching exceptions
+    -> Rollback the session if a duplicate user or composition is generated
 
 -> Useful Faker Functions
-	-> Faker’s `bs()` function can generate cool-sounding composition titles
-	-> Example: "Orchestrate Bricks-and-Clicks Portals"
+    -> Faker’s `bs()` function can generate cool-sounding composition titles
+    -> Example: "Orchestrate Bricks-and-Clicks Portals"
 
 -> Paginate Data
-	-> After generating a lot of data, paginate it to prevent slow page loads
-	-> This helps when displaying many compositions on the index page
+    -> After generating a lot of data, paginate it to prevent slow page loads
+    -> This helps when displaying many compositions on the index page
 
 -> Summary: Using Python Faker Random Data Generator
-	-> Python Faker is useful for generating fake data for testing and development
-	-> Ensure fake data is only used in development by separating configurations
-	-> Use Faker to generate users and compositions, managing duplicates as needed
+    -> Python Faker is useful for generating fake data for testing and development
+    -> Ensure fake data is only used in development by separating configurations
+    -> Use Faker to generate users and compositions, managing duplicates as needed

@@ -1,52 +1,52 @@
 -> Introduction to supporting content creation in your Flask app
-	-> Social media websites allow users to submit content, like posts or music
-	-> This lesson focuses on enabling users to create and submit compositions in your app
-	-> Compositions can include singles, EPs, or albums with a title, description, and links
-	-> You will learn how to implement the functionality to represent these compositions in the database
+    -> Social media websites allow users to submit content, like posts or music
+    -> This lesson focuses on enabling users to create and submit compositions in your app
+    -> Compositions can include singles, EPs, or albums with a title, description, and links
+    -> You will learn how to implement the functionality to represent these compositions in the database
 
 -> Composing Website Content
-	-> The term "post" in social media is commonly used for submitting content
-	-> For the course, posts are referred to as "compositions" related to musical creations
-	-> Compositions have a release type (single, EP, or album), a title, a description, and links to support or listen to them
-	-> You can get creative with the content of compositions
+    -> The term "post" in social media is commonly used for submitting content
+    -> For the course, posts are referred to as "compositions" related to musical creations
+    -> Compositions have a release type (single, EP, or album), a title, a description, and links to support or listen to them
+    -> You can get creative with the content of compositions
 
 -> Coding the Composition Model
-	-> First, compositions need to be represented in the database for persistence
-	-> The model class for compositions includes a release type, title, description, timestamp, and the user's ID
-	-> Relationships are established between users and compositions, creating a one-to-many relationship
-	-> The `ReleaseType` class defines constants for different composition types (single, EP, album)
+    -> First, compositions need to be represented in the database for persistence
+    -> The model class for compositions includes a release type, title, description, timestamp, and the user's ID
+    -> Relationships are established between users and compositions, creating a one-to-many relationship
+    -> The `ReleaseType` class defines constants for different composition types (single, EP, album)
 
 -> The Composition Model Code
-	-> Example `Composition` class code shows how to define the model and relationship to the User model
-	-> Compositions are stored with an ID, release type, title, description, timestamp, and user ID
-	-> A one-to-many relationship links compositions to the artist (user)
+    -> Example `Composition` class code shows how to define the model and relationship to the User model
+    -> Compositions are stored with an ID, release type, title, description, timestamp, and user ID
+    -> A one-to-many relationship links compositions to the artist (user)
 
 -> Creating a Composition Form
-	-> A form is created to let users submit their compositions
-	-> The form includes fields for release type, title, description, and a submit button
-	-> `CompositionForm` includes validation to ensure the release type and title are filled
-	-> The form's release type uses integers to represent different release types (single, EP, album)
+    -> A form is created to let users submit their compositions
+    -> The form includes fields for release type, title, description, and a submit button
+    -> `CompositionForm` includes validation to ensure the release type and title are filled
+    -> The form's release type uses integers to represent different release types (single, EP, album)
 
 -> Changing the Index Page
-	-> The index page needs to display the composition form and existing compositions
-	-> The form should be placed on the main page for easy access
-	-> The `index()` function handles the form submission and composition creation
-	-> If the form is valid, the composition is saved in the database and the page redirects
-	-> The page also fetches compositions from the database, ordered by timestamp
+    -> The index page needs to display the composition form and existing compositions
+    -> The form should be placed on the main page for easy access
+    -> The `index()` function handles the form submission and composition creation
+    -> If the form is valid, the composition is saved in the database and the page redirects
+    -> The page also fetches compositions from the database, ordered by timestamp
 
 -> Understanding `current_user` and the View Function
-	-> `current_user` is a proxy for the logged-in user, allowing easy access to their data
-	-> This shortcut helps create a new composition tied to the current user without querying the database for the user object
+    -> `current_user` is a proxy for the logged-in user, allowing easy access to their data
+    -> This shortcut helps create a new composition tied to the current user without querying the database for the user object
 
 -> Displaying Compositions on the Index Page
-	-> After confirming compositions can be created, you can display them in the template
-	-> The compositions are ordered by timestamp, so the most recent ones appear first
-	-> Temporary code can be used to display the number of compositions to confirm everything is working
+    -> After confirming compositions can be created, you can display them in the template
+    -> The compositions are ordered by timestamp, so the most recent ones appear first
+    -> Temporary code can be used to display the number of compositions to confirm everything is working
 
 -> Make Sure It Works
-	-> To test if the composition creation works, temporarily display the number of compositions in the database
-	-> Once successful, you can proceed with displaying the compositions in the template
+    -> To test if the composition creation works, temporarily display the number of compositions in the database
+    -> Once successful, you can proceed with displaying the compositions in the template
 
 -> Summary of Supporting Content Creation in Flask
-	-> The process involves defining the composition model in the database, creating a form for submission, and displaying the compositions on the index page
-	-> This allows users to create, view, and share their musical compositions within your app
+    -> The process involves defining the composition model in the database, creating a form for submission, and displaying the compositions on the index page
+    -> This allows users to create, view, and share their musical compositions within your app
