@@ -1,54 +1,55 @@
+
 -> Permalinks are unique URLs that reference specific content on a website
-	-> They allow users to easily revisit content later
-	-> For a Python + Flask app, permalinks are used to link to user-generated content like compositions
-	-> Permalinks help make content accessible by a stable, readable URL
+    -> They allow users to easily revisit content later
+    -> For a Python + Flask app, permalinks are used to link to user-generated content like compositions
+    -> Permalinks help make content accessible via a stable, readable URL
 
 -> What is a Permalink?
-	-> A permalink is a URL that points directly to specific content on a website
-	-> Used for bookmarking or sharing content with a permanent reference
-	-> For the Flask app, permalinks will be used to link to compositions
+    -> A permalink is a URL that points directly to specific content on a website
+    -> Used for bookmarking or sharing content with a permanent reference
+    -> For the Flask app, permalinks will be used to link to compositions
 
 -> How Permalinks Are Born
-	-> Some websites generate permalinks with a numeric ID tied to database content
-	-> A unique ID is assigned to each composition in the database
-	-> For better readability, permalinks can use slugs instead of numeric IDs
-	-> Slugs are human-readable and based on the content of the page
+    -> Some websites generate permalinks with a numeric ID tied to database content
+    -> A unique ID is assigned to each composition in the database
+    -> For better readability, permalinks can use slugs instead of numeric IDs
+    -> Slugs are human-readable and based on the content of the page
 
 -> Creating Permalink Slugs
-	-> To create slugs, add a new field to your model to store the slug
-	-> Slugs are generated using the composition's title and ID
-	-> Spaces and non-alphanumeric characters are replaced with hyphens
-	-> The slug should be unique for each composition, even if titles are the same
-	-> Regular expressions can be used to clean the title for the slug
-	-> Example slug format: /composition/44315-the-shimmer-of-idols-album
+    -> To create slugs, add a new field to your model to store the slug
+    -> Slugs are generated using the composition's title and ID
+    -> Spaces and non-alphanumeric characters are replaced with hyphens
+    -> The slug should be unique for each composition, even if titles are the same
+    -> Regular expressions can be used to clean the title for the slug
+    -> Example slug format: /composition/44315-the-shimmer-of-idols-album
 
 -> Add The Permalinks
-	-> Once slugs are generated, create a new view function for individual compositions
-	-> The dynamic part of the URL will be the slug from the database
-	-> Update the index page and other templates to include links to compositions
-	-> Permalinks make the URLs more descriptive and easier to navigate
-	-> Each composition page can be accessed via its unique slug
+    -> Once slugs are generated, create a new view function for individual compositions
+    -> The dynamic part of the URL will be the slug from the database
+    -> Update the index page and other templates to include links to compositions
+    -> Permalinks make the URLs more descriptive and easier to navigate
+    -> Each composition page can be accessed via its unique slug
 
 -> Task: Add a link to the composition in the index page
-	-> Create a link in the title of the composition pointing to its permalink
-	-> Generate the slug after committing the composition to the database
-	-> Use a view function to render the composition page using the slug
-	-> Example route: @main.route('/composition/<slug>')
+    -> Create a link in the title of the composition pointing to its permalink
+    -> Generate the slug after committing the composition to the database
+    -> Use a view function to render the composition page using the slug
+    -> Example route: @main.route('/composition/<slug>')
 
 -> Task: Create a template to render a single composition
-	-> Ensure that the permalink is included in the composition's template
-	-> This allows for consistent display of individual compositions across the app
+    -> Ensure that the permalink is included in the composition's template
+    -> This allows for consistent display of individual compositions across the app
 
 -> Summary: How to Create a Permalink Slug in Python + Flask
-	-> Permalinks are unique URLs for specific content on a website
-	-> Slugs make these URLs more human-readable and meaningful
-	-> To generate slugs, add a new field to the model and use regular expressions to format them
-	-> After creating the slug, add a view function to render individual compositions
-	-> Ensure each composition has a permalink that users can bookmark or share
+    -> Permalinks are unique URLs for specific content on a website
+    -> Slugs make these URLs more human-readable and meaningful
+    -> To generate slugs, add a new field to the model and use regular expressions to format them
+    -> After creating the slug, add a view function to render individual compositions
+    -> Ensure each composition has a permalink that users can bookmark or share
 
 -> Mentorship Makes the Difference!
-	-> Join the CodingNomads' Mentorship Bootcamp Program
-	-> Get a team of mentors dedicated to your success
-	-> Weekly 1-on-1 screen share meetings with a professional mentor
-	-> Constant, personal, in-depth support 7 days a week via Discord
-	-> Accountability, feedback, encouragement, and success
+    -> Join the CodingNomads' Mentorship Bootcamp Programme
+    -> Get a team of mentors dedicated to your success
+    -> Weekly 1-on-1 screen share meetings with a professional mentor
+    -> Constant, personal, in-depth support 7 days a week via Discord
+    -> Accountability, feedback, encouragement, and success
