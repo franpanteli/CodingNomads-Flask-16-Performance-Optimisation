@@ -1,0 +1,89 @@
+Flask Video Notes on Creating Permanent Links for Compositions Using Slugs
+
+-> Creating Permanent Links Using Slugs
+   -> To create permanent links, you can use Python’s built-in regular expression library `re`
+   -> A slug is a human-readable part of the URL that uniquely identifies a resource, such as a composition, making it easier to share and remember
+
+-> Creating a Slug in the Composition Model
+   -> In the composition model, create a new method that generates a slug for each composition
+     - The slug is typically based on the title of the composition, with non-alphanumeric characters replaced by dashes
+     - Use Python’s `re` module to generate a slug by substituting non-alphanumeric characters with dashes:
+       ```python
+       import re
+
+       def generate_slug(title):
+           # Convert the title to lowercase and replace spaces and non-alphanumeric characters with dashes
+           slug = re.sub(r'[^a-zA-Z0-9]', '-', title.lower())
+           return slug
+       ```
+   -> This method should be added to the composition class. The result will be a clean, URL-friendly version of the title
+   -> The slug can be used as part of the permanent link to the composition
+
+-> Adding the Slug to the Composition and Committing to the Database
+   -> Once the slug is generated, it needs to be added to the composition object and then committed to the database
+     - For example, after generating the slug, you can add it as an attribute of the composition object:
+       ```python
+       composition.slug = generate_slug(composition.title)
+       db.session.add(composition)
+       db.session.commit()
+       ```
+   -> It is important to generate the slug after the first commit
+     - This is because the composition’s `id` is only assigned after the row is committed to the database, and the slug may depend on the `id`
+
+-> Handling the Slug Generation After the First Commit
+   -> To ensure that the slug is generated only after the composition is committed to the database (and has an `id`), you can define this in a `before_insert` hook or in the route handling new composition submissions
+     - For example, in your view function:
+       ```python
+       @app.route('/submit_composition', methods=['POST'])
+       def submit_composition():
+           # After the composition is created and committed to the database
+           composition = Composition(title=request.form['title'], content=request.form['content'])
+           db.session.add(composition)
+           db.session.commit()  # Commit to get an id
+           
+           # Now generate the slug
+           composition.slug = generate_slug(composition.title)
+           db.session.commit()  # Commit the slug change
+           return redirect(url_for('view_composition', slug=composition.slug))
+       ```
+
+-> Retrieving a Composition Using Its Slug
+   -> To retrieve a composition based on its slug, write a query to fetch the composition by slug
+     - For example:
+       ```python
+       composition = db.session.query(Composition).filter_by(slug=slug).first()
+       ```
+   -> If the composition is not found, you should return a 404 error to the user
+     - Use Flask’s built-in `abort` function to raise a 404 error:
+       ```python
+       if not composition:
+           abort(404)
+       ```
+
+-> Creating a Template to Render a Single Composition
+   -> To display a single composition, create a template called `composition.html`
+     - Pass the retrieved composition to the template:
+       ```python
+       @app.route('/composition/<slug>')
+       def view_composition(slug):
+           composition = db.session.query(Composition).filter_by(slug=slug).first()
+           if not composition:
+               abort(404)
+           return render_template('composition.html', composition=composition)
+       ```
+   -> In the `composition.html` template, use the data passed in to display the composition’s details
+     - For example:
+       ```html
+       <h1>{{ composition.title }}</h1>
+       <p>{{ composition.content }}</p>
+       ```
+
+-> Navigating to a Composition
+   -> Once this is set up, you can visit the homepage and navigate to a single composition by using its unique URL, which includes the slug
+     - The URL will look something like: `/composition/some-title-slug`
+   -> The URL should be constructed using the slug generated from the title and ID of the composition
+
+-> Summary
+   -> In this guide, we covered how to generate a permanent link for a single composition by creating a slug
+   -> We also discussed how to generate the slug, store it in the database, retrieve a composition by its slug, and render it in a template
+   -> This allows for easy and human-readable URLs for each composition in your application

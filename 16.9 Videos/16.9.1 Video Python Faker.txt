@@ -1,0 +1,130 @@
+Flask Video Notes on Installing Faker, Rearranging Dependencies, and Creating Fake Users and Content
+
+-> Installing Faker
+   -> First, install the Faker library, which is used to generate fake data, by using pip
+     - You can install it by running the following command:
+       ```bash
+       pip install faker
+       ```
+   -> Faker is a Python package, so it can easily be installed and used to generate fake data for testing or development purposes
+
+-> Rearranging Project Dependencies for Development, Production, and Common
+   -> Some dependencies of your app are only needed for development, while others are needed for production
+   -> To manage dependencies more efficiently, you can separate them into distinct files for development, production, and common dependencies
+   -> Create a new folder called `requirements`
+     - This helps keep your dependencies organised
+     - For example, you can run:
+       ```bash
+       mkdir requirements
+       ```
+   -> Move your existing `requirements.txt` file into the `requirements` folder
+   -> Now create two new files: `prod.txt` for production-specific dependencies and `dev.txt` for development-specific dependencies
+     - These files will list dependencies that should only be used in specific environments
+   -> Rename the original `requirements.txt` file to `common.txt`
+     - The `common.txt` file will contain dependencies that are shared between both development and production
+     - Most of your app’s dependencies will go here
+   -> To update your development dependencies:
+     - Open the terminal and use `pip freeze` to get a list of installed packages in your environment
+       ```bash
+       pip freeze > requirements.txt
+       ```
+     - Next, pipe the output to a `grep` search to filter the Faker package:
+       ```bash
+       pip freeze | grep faker > requirements/dev.txt
+       ```
+     - This command will ensure that only Faker is added to the `dev.txt` file, as it is needed only in the development environment
+   -> Be careful not to include Faker in the `common.txt` file, as it's not necessary for production
+   -> To ensure both development and production environments include the common dependencies:
+     - In both `dev.txt` and `prod.txt`, include the common dependencies by adding the following:
+       ```bash
+       -r common.txt
+       ```
+     - This makes sure that both development and production will have access to the shared dependencies
+
+-> Creating Fake Content
+   -> In the app folder, create a new Python file called `fake.py`
+     - This file will contain all your code for generating fake data
+   -> Along with any other necessary dependencies, you need to import the `Faker` object from the Faker library
+     - Example:
+       ```python
+       from faker import Faker
+       ```
+   -> The first piece of content to fake are users, as users often create content in your application
+     - Define a function to generate a given number of fake users
+     - Example function to generate fake users:
+       ```python
+       def generate_fake_users(user_count):
+           fake = Faker()
+           for _ in range(user_count):
+               user = {
+                   'name': fake.name(),
+                   'email': fake.email(),
+                   'username': fake.user_name(),
+                   'password': 'password123',  # Use a fixed password for all users
+                   'confirmed': True  # Set confirmed status to True for all users
+               }
+               # Add user to database (pseudo code)
+               try:
+                   db.session.add(user)
+                   db.session.commit()
+               except IntegrityError:
+                   db.session.rollback()  # Rollback if there's a duplicate entry
+       ```
+     - Use `Faker` methods such as `name()`, `email()`, `user_name()` to generate fake user information
+     - The `password` is set to the same value for all users, but you could hash it before storing it in a real application
+   -> If there’s a chance that some of the generated user data (such as email or username) might duplicate, ensure that duplicates are handled by rolling back the transaction if needed
+   -> For example, if a duplicate email or username exists, Flask-SQLAlchemy’s `IntegrityError` will occur. In this case, roll back the changes:
+     ```python
+     except IntegrityError:
+         db.session.rollback()
+     ```
+
+-> Generating Fake Compositions (Content Created by Users)
+   -> Once you have users, you can generate fake content like compositions or posts
+   -> First, get the count of users in the database
+   - Example to get user count:
+     ```python
+     user_count = db.session.query(User).count()
+     ```
+   -> Create a loop that iterates through the number of users to generate corresponding content
+   -> For each iteration, pick a user randomly from the database to associate with the composition using the `offset_query` method:
+     ```python
+     import random
+     random_user = db.session.query(User).offset(random.randint(0, user_count - 1)).first()
+     ```
+   -> Generate fake content for the composition using Faker methods:
+     ```python
+     composition = {
+         'title': fake.sentence(),
+         'content': fake.text(),
+         'user_id': random_user.id
+     }
+     ```
+   -> Add each composition to the session and commit them at the end:
+     ```python
+     db.session.add(composition)
+     db.session.commit()
+     ```
+   -> Since the compositions table doesn’t have any uniqueness constraints, you don’t need to worry about duplicates
+
+-> Running the Data Generation
+   -> Start a Flask shell session to run your data generation function:
+     ```bash
+     flask shell
+     ```
+   -> Once in the shell, call the `generate_fake_users` and `generate_fake_compositions` functions
+   - For example:
+     ```python
+     generate_fake_users(10)  # Generate 10 fake users
+     generate_fake_compositions(20)  # Generate 20 fake compositions
+     ```
+   -> After running these functions, exit the shell and launch your app using:
+     ```bash
+     flask run
+     ```
+   -> Visit your index page (e.g., `/`) and you should see several compositions with randomly generated titles and descriptions
+     - These compositions should have random, fake titles and content
+
+-> Summary
+   -> In this video, I showed how to install Faker, how to rearrange project dependencies for development, production, and common environments, and how to create fake users and fake content
+   -> By using Faker and organising your dependencies correctly, you can efficiently create test data and manage project dependencies for different environments
