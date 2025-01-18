@@ -1,5 +1,5 @@
 # CodingNomads-Flask-16-Performance-Optimisation
-This repository contains my work for the 16th module in the [Coding Nomads Flask Web Framework course](https://codingnomads.com/course/python-flask-web-framework). I completed this 21-module course as part of my independent learning, to invest in my Python skills. I produced an in-depth library of resources for this module, whose file tree is provided below. 
+This repository contains my work for the 16th module in the [Coding Nomads Flask Web Framework course](https://codingnomads.com/course/python-flask-web-framework). I completed this 21-module course as part of my independent learning, to invest in my Python skills. I produced an in-depth library of resources on this module, whose file tree is provided below. 
 
 ![Screenshot 2025-01-18 at 16 26 08](https://github.com/user-attachments/assets/685500fd-0da5-4a0c-9c13-411a7e5b8352)
 
