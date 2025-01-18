@@ -1,4 +1,4 @@
-# My Project
+# CodingNomads-Flask-16-Performance-Optimisation
 This repository contains my work for the 16th module in the Coding Nomads Flask course. I completed this as part of my independent learning, to invest in my Python skills. I produced an in-depth library of resources on this module, whose file tree is provided below. 
 <img width="427" alt="Screenshot 2025-01-18 at 16 16 25" src="https://github.com/user-attachments/assets/c929ae7a-99ab-4c93-afc3-f00c1f837925" />
 
@@ -10,3 +10,7 @@ Video notes were next made in a txt format, contained in [16.9 Videos](https://g
 
 ![App demo](https://github.com/franpanteli/12/blob/main/12%20Notes%20Word%20Cloud%20Giff.gif)
 [Used a word cloud generator](https://wordart.com/create)
+### To Clone This Repository
+```
+git clone https://github.com/franpanteli/CodingNomads-Flask-16-Performance-Optimisation.git
+```
