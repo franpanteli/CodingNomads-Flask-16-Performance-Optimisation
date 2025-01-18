@@ -9,7 +9,7 @@ I saved course material as pdf files (.pdf extensions; blue) and made notes on t
 
 Video notes were next made in a txt format, contained in [16.9 Videos; yellow](https://github.com/franpanteli/CodingNomads-Flask-16-Performance-Optimisation/tree/main/16.9%20Videos). A [module quiz; yellow](https://github.com/franpanteli/CodingNomads-Flask-16-Performance-Optimisation/blob/main/16.10%20Quizzes/16.10%20Quiz%20Representing%20Content.pdf) was finally completed and passed. 
 
-### To Clone This Repository
+## To Clone This Repository
 ```
 git clone https://github.com/franpanteli/CodingNomads-Flask-16-Performance-Optimisation.git
 ```
