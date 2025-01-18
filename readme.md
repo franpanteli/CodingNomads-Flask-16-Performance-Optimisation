@@ -3,7 +3,7 @@ This repository contains my work for the 16th module in the [Coding Nomads Flask
 
 ![Screenshot 2025-01-18 at 16 26 08](https://github.com/user-attachments/assets/685500fd-0da5-4a0c-9c13-411a7e5b8352)
 
-I saved course material as pdf files (.pdf extensions; blue) and made notes on these (Written Notes.txt; blue). I made summary notes, by recording voice memos of Siri reading my notes out (Voiced Notes.mp4a; blue) and [created word clouds](https://wordart.com/create) out of them (Word Cloud.png; blue). These word clouds were combined into a giff, to visually represent module content.
+I saved course material as pdf files (.pdf extensions; blue) and made notes on these (Written Notes.txt; blue). I made summary notes, by recording voice memos of Siri reading my notes out (Voiced Notes.mp4a; blue) and [created word clouds](https://wordart.com/create) out of these (Word Cloud.png; blue). These word clouds were combined into a giff, to visually represent module content.
 
 ![16 Notes Word Cloud Giff](https://github.com/user-attachments/assets/4095ac1d-3930-4eb1-8034-a9727301e1e4)
 
