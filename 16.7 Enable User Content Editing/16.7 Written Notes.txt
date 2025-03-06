@@ -1,37 +1,36 @@
+-> enable user content editing  
+    -> allow users to edit their compositions in the app  
+    -> similar to enabling users to edit their profiles  
+    -> this lesson focuses on letting users have editing control over their own compositions  
 
--> Enable User Content Editing
-    -> Allow users to edit their compositions in the app
-    -> Similar to enabling users to edit their profiles
-    -> This lesson focuses on letting users have editing control over their own compositions
+-> edit composition template  
+    -> create a template to show a form for editing a composition  
+    -> reuse elements from previous templates for consistency  
+    -> the template should allow users to edit their compositions  
 
--> Edit Composition Template
-    -> Create a template to show a form for editing a composition
-    -> Reuse elements from previous templates for consistency
-    -> The template should allow users to edit their compositions
+-> view function  
+    -> create a view function to render the edit composition template  
+    -> the view function should point to the url `edit/<slug>`  
+    -> the slug should correspond to the composition being edited  
+    -> only the user who created the composition or an admin should be able to access the edit page  
+    -> users who try to edit compositions they didn’t create should receive a 403 forbidden error  
+    -> after editing, regenerate the permalink slug to account for changes to the composition's title  
 
--> View Function
-    -> Create a view function to render the edit composition template
-    -> The view function should point to the URL `edit/<slug>`
-    -> The slug should correspond to the composition being edited
-    -> Only the user who created the composition or an admin should be able to access the edit page
-    -> Users who try to edit compositions they didn’t create should receive a 403 forbidden error
-    -> After editing, regenerate the permalink slug to account for changes to the composition's title
+-> add an edit button  
+    -> make it easier for users to access the edit page by adding an edit button  
+    -> show the edit button for logged-in users on their own compositions  
+    -> show the edit button for admins on all compositions  
+    -> position the edit button using css for proper alignment  
+    -> example css: `div.composition-footer { text-align: right; }`  
 
--> Add an Edit Button
-    -> Make it easier for users to access the edit page by adding an edit button
-    -> Show the edit button for logged-in users on their own compositions
-    -> Show the edit button for admins on all compositions
-    -> Position the edit button using CSS for proper alignment
-    -> Example CSS: `div.composition-footer { text-align: right; }`
+-> summary: enable user editing of your python + flask app  
+    -> create a template for editing compositions  
+    -> implement a view function to render the editing form  
+    -> add an edit button for users to easily access the edit page  
+    -> ensure only the composition's creator or admins can edit it  
+    -> regenerate the permalink slug when a user updates a composition's title  
 
--> Summary: Enable User Editing of your Python + Flask app
-    -> Create a template for editing compositions
-    -> Implement a view function to render the editing form
-    -> Add an edit button for users to easily access the edit page
-    -> Ensure only the composition's creator or admins can edit it
-    -> Regenerate the permalink slug when a user updates a composition's title
-
--> Mentorship Makes the Difference!
-    -> Join the CodingNomads' Mentorship Bootcamp Programme
-    -> Get personalised mentorship and support from experienced professionals
-    -> Weekly 1-on-1 meetings, 7-day support via Discord, and accountability
+-> on mentorship
+    -> join the codingnomads' mentorship bootcamp programme  
+    -> get personalised mentorship and support from experienced professionals  
+    -> weekly 1-on-1 meetings, 7-day support via discord, and accountability  

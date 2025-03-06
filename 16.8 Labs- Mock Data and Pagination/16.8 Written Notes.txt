@@ -1,24 +1,23 @@
--> Labs: Mock Data and Pagination
-    -> 3-minute exercise to complete
-    -> By Brandon Gigous
+-> labs: mock data and pagination  
+    -> 3-minute exercise to complete  
 
--> Instructions for the Lab
-    -> Clone the Python Flask labs project if not already done
-    -> Open the cloned project in VS Code
-    -> Complete all exercises in the "15_representing_content/01_fake_and_paginate" folder
+-> instructions for the lab  
+    -> clone the python flask labs project if not already done  
+    -> open the cloned project in vs code  
+    -> complete all exercises in the "15_representing_content/01_fake_and_paginate" folder  
 
--> Assistance and Support
-    -> If subscribed to membership or mentorship programmes, reach out via Discord for help
-    -> Ask for reviews or assistance when needed
+-> assistance and support  
+    -> if subscribed to membership or mentorship programmes, reach out via discord for help  
+    -> ask for reviews or assistance when needed  
 
--> Version Control and Collaboration
-    -> Important to push your completed work to GitHub
-    -> Git and GitHub are essential tools for version control and collaboration in software engineering
-    -> Do not skip this step
-    -> Prove your work and gain valuable practice with version control
-    -> Pushing your work to GitHub helps demonstrate progress and commitment
-    -> Take advantage of GitHub contributions for a strong portfolio
+-> version control and collaboration  
+    -> important to push your completed work to github  
+    -> git and github are essential tools for version control and collaboration in software engineering  
+    -> do not skip this step  
+    -> prove your work and gain valuable practice with version control  
+    -> pushing your work to github helps demonstrate progress and commitment  
+    -> take advantage of github contributions for a strong portfolio  
 
--> Contribution Graphs
-    -> Looking at contribution graphs on GitHub, which developer would you hire?
-    -> Example of the importance of regular contributions to GitHub for visibility and career growth
+-> contribution graphs  
+    -> looking at contribution graphs on github, which developer would you hire?  
+    -> example of the importance of regular contributions to github for visibility and career growth  
